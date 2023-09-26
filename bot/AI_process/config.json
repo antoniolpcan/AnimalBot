@@ -1,0 +1,10 @@
+{
+    "Speak":{
+        "phrases": ["Olá novamente ", "Faça alguma pergunta que quiser", "Será um prazer respondê-lo", "Já tirou todas as suas dúvidas?", "Pergunte, não tenha receio"],
+        "notFound": ["Lamento mas não consegui compreender a pergunta", "Desculpe, não consegui captar a ideia", "Vamos tentar novamente, me pergunte de outra forma"],
+        "quest": "Pergunte-me algo sobre mamíferos: ",
+        "search": "Pesquisa aprimorada em tempo real: ",
+        "break": ["Foi um prazer falar com você ", "Até logo", "Caso tenha alguma dúvida, estarei aqui"],
+        "userName": ["Antonio", "Gleison"]
+    }
+}
