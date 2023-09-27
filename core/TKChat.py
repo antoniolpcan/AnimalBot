@@ -31,6 +31,9 @@ class TKChat():
         div_bottom.pack(side="bottom")
 
         #Input
+        self.chat = Text(self.window, width=800, height=400)
+        self.chat.config(state=DISABLED)
+        self.chat.pack()
         self.message_value = Entry(self.window)
 
         #Messages
@@ -39,13 +42,14 @@ class TKChat():
 
         #Botões
         self.button_exit = Button(self.window, text = "Fechar", command = exit, bg=self.button_cancel, fg=self.text_color, width=15) 
-        self.button_send = Button(self.window, font = ('Arial',10), text = "Enviar", command = self.start_conversion, bg=self.button_color, fg=self.text_color, width=15) 
+        self.button_send = Button(self.window, font = ('Arial',10), text = "Enviar", command = self.send_message, bg=self.button_color, fg=self.text_color, width=15) 
         self.loading = Label(self.window,  text = f"selecionando...", width = 100, fg=self.text_color, bg=self.bg_color)
 
     def place_start_window(self, nome, animal):  
         self.message_value.place(width=600, height=50, relx=0.40, rely=0.90, anchor=CENTER)
         width_box = (len(nome) * 5) + 80
-        Label(self.window, font = ('Arial',8), text = f"Olá {nome}!", bg=self.div_bot).place(width=width_box, height=50, relx=0.05, rely=0.20)
+        
+        #Label(self.window, font = ('Arial',8), text = f"Olá {nome}!", bg=self.div_bot).place(width=width_box, height=50, relx=0.05, rely=0.20)
         self.button_send.place(height=50, relx=0.90, rely=0.90, anchor=CENTER)
         self.button_exit.place(width=80,relx=0.05, rely=0.02)
         self.window.mainloop() 
@@ -53,11 +57,17 @@ class TKChat():
     def treat_exception(self, exception):
         return exception
     
-    def send_message(self, message):
-        self.list_messages.append(Label(self.window, text = str(message), bg=self.div_user))
-        for item in self.list_messages:
-            item.place(width=130, height=50, relx=0.80, rely=0.30)
-        
+
+    def send_message(self):
+        mensagem = self.message_value.get()
+        if mensagem:
+            # Adicione a mensagem à janela de chat
+            self.chat.config(state=NORMAL)
+            self.chat.insert(END, "Você: " + mensagem + "\n")
+            self.chat.config(state=DISABLED)
+            
+            # Limpe a entrada de mensagem
+            self.message_value.delete(0, END)
 
     def start_conversion(self):
 
