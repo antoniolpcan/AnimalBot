@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, scrolledtext
 
 class TKChat():
 
@@ -31,7 +31,7 @@ class TKChat():
         div_bottom.pack(side="bottom")
 
         #Input
-        self.chat = Text(self.window, width=800, height=400)
+        self.chat = scrolledtext.ScrolledText(self.window, width=800, height=400)
         self.chat.config(state=DISABLED)
         self.chat.pack()
         self.message_value = Entry(self.window)
@@ -61,12 +61,9 @@ class TKChat():
     def send_message(self):
         mensagem = self.message_value.get()
         if mensagem:
-            # Adicione a mensagem à janela de chat
-            self.chat.config(state=NORMAL)
-            self.chat.insert(END, "Você: " + mensagem + "\n")
-            self.chat.config(state=DISABLED)
-            
-            # Limpe a entrada de mensagem
+            message = "Você: " + mensagem + "\n"
+            mensagem_label = Label(self.chat, text=message, bg="lightblue")
+            mensagem_label.pack(side="right")
             self.message_value.delete(0, END)
 
     def start_conversion(self):
