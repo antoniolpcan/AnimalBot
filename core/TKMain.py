@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from .TKChat import TKChat
+from core.TKChat import TKChat
 
 class TKMain():
 
@@ -77,8 +77,7 @@ class TKMain():
             messagebox.showerror("ERROR!", ex)
             self.loading.place_forget()
 
-    def open_chat(self, name: str, animal: str):
-        fbot = TKChat()
-        fbot.place_start_window(name, name)
+    def open_chat(self, name: str = "Usuário", animal: str = 'Animais Carnívoros'):
+        fbot = TKChat(name, animal)
         
     
