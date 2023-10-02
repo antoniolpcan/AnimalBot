@@ -14,7 +14,7 @@ class TKMain():
         self.text_color = "black"
 
         #Configurações de Tela
-        self.window.title('Robô de Animais') 
+        self.window.title('Chatbot de Animais') 
         self.window.geometry("500x500")
         self.window.configure(bg=self.bg_color)
         self.window.minsize(800, 500) 
@@ -28,7 +28,7 @@ class TKMain():
         div_bottom.pack(side="bottom")
 
         # Titulo
-        self.label_file_explorer = Label(self.window, font = ('Arial',30), text = "Robô de Animais", width = 100, bg=self.bg_color, fg=self.text_color)
+        self.label_file_explorer = Label(self.window, font = ('Arial',30), text = "Chatbot de Animais", width = 100, bg=self.bg_color, fg=self.text_color)
         
         #Input
         self.message_label = Label(self.window ,text = "Digite seu Nome:", fg=self.text_color, bg=self.bg_color)
@@ -67,10 +67,14 @@ class TKMain():
         try:
             name = self.message_value.get()
             animal = self.animal_types.get()
-            self.window.destroy()
-            self.open_chat(name, animal)
+            print(name)
+            print(animal)
+            if name in [None,''] or animal in [None, '', 'Selecione...']:
+                messagebox.showerror("ERRO!", "Todos os campos precisam ser preenchidos!")
+            else:
+                self.window.destroy()
+                self.open_chat(name, animal)
             
-
         except Exception as ex:
             print(ex)
             ex = self.treat_exception(ex)

@@ -25,7 +25,7 @@ class TKChat():
 
         #Configurações de Tela
         self.window = Tk()
-        self.window.title('Robô de Animais') 
+        self.window.title('Chatbot de Animais') 
         self.window.geometry("500x500")
         self.window.configure(bg=self.bg_color)
         self.window.minsize(800, 500) 
